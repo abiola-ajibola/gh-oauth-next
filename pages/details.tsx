@@ -30,12 +30,7 @@ export default function Details({ userData }): React.ReactElement {
             </p>
             <p>
               <span className={styles.keys}>Public repositories: </span>
-              <span className={styles.value}>
-                <a title={userData.public_repos} href={userData.public_repos}>
-                  {" "}
-                  View Repositories{" "}
-                </a>
-              </span>
+              <span className={styles.value}>{userData.public_repos}</span>
             </p>
           </div>
         </div>

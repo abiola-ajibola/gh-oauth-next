@@ -26,12 +26,18 @@ export default async function getUserData(query) {
       accept: "application/json",
     },
   });
+    
   const userData = await tokenResponse.json();
 
+  console.log(userData.repos_url);
+  const reposResponse = await fetch(userData.repos_url);
+  const resposData = await reposResponse.json()
+  const reposCount = resposData
+  
   return {
     name: userData.name,
     image: userData.avatar_url,
     bio: userData.bio,
-    public_repos: userData.repos_url,
+    public_repos: reposCount.length,
   };
 }

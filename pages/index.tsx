@@ -18,6 +18,7 @@ const authorizeBaseUrl: string =
   "https://github.com/login/oauth/authorize/?client_id=cca734a0793b74f427cc&allow_signup=false&state=";
 
 export default function Home({ OAuthState }): React.ReactElement {
+  
   const authorizeURL: string = authorizeBaseUrl + OAuthState;
   const handleLogin = () => {
     window.location.href = authorizeURL;
