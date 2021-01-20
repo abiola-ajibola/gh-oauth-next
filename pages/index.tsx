@@ -7,19 +7,22 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import generateState from "../lib/auth";
 import Layout from "../components/Layout";
 
+// Generate a state and pass it to the component props on page load
 export function getServerSideProps(): object {
   const OAuthState = generateState();
   return {
     props: { OAuthState },
   };
 }
-
+const client_id: string = "cca734a0793b74f427cc";
 const authorizeBaseUrl: string =
-  "https://github.com/login/oauth/authorize/?client_id=cca734a0793b74f427cc&allow_signup=false&state=";
+  "https://github.com/login/oauth/authorize/?client_id=" + client_id + "&allow_signup=false&state=";
 
 export default function Home({ OAuthState }): React.ReactElement {
   
   const authorizeURL: string = authorizeBaseUrl + OAuthState;
+
+  // on clicking the login button, redirect users to GitHib authorization page with state
   const handleLogin = () => {
     window.location.href = authorizeURL;
   };
